@@ -1,0 +1,96 @@
+<script src="script.js"></script>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wordle App</title>
+    <style>
+        .wordle-container {
+            position: relative;
+            background-image: url('UWCampus-Quad.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 80%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            height: 40%;
+            width: 30%;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .wordle-input {
+            margin-bottom: 10px;
+        }
+
+        .wordle-input input {
+            padding: 5px;
+        }
+
+        .wordle-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 7px 20px;
+            border-radius: 5px;
+            margin-left: 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .wordle-output {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: left;
+            margin: 20px;
+        }
+
+        .yellow-letter {
+            margin-left: 5px;
+            padding: 10px;
+            background-color: yellow;
+            color: black;
+        }
+
+        .green-letter {
+            margin-left: 5px;
+            padding: 10px;
+            background-color: green;
+            color: black;
+        }
+
+        .grey-letter {
+            margin-left: 5px;
+            padding: 10px;
+            background-color: grey;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wordle-container">
+        <div class="overlay">
+            <h1>Wordle App</h1>
+            <div class="wordle-input">
+                <input type="text" id="inputField" placeholder="Enter your guess" />
+                <button class="wordle-btn" id="wordle-btn" onclick="checkGuess()">Check</button>
+            </div>
+            <div class="wordle-output">
+                <p id="result"></p>
+            </div>
+        </div>
+    </div>
+</body>
