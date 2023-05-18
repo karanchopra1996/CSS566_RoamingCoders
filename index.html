@@ -15,6 +15,21 @@
             text-align: center;
         }
 
+        .timer-container {
+            background-color: white;
+            font-size: 17px;
+            width: 12%;
+            height: 10%;
+            position: absolute;
+            top: 14%;
+            right: 9%;
+            border-radius: 8px;
+        }
+
+        .timer {
+            font-size: 30px;
+        }
+
         .overlay {
             position: absolute;
             top: 50%;
@@ -36,7 +51,7 @@
             padding: 5px;
         }
 
-        .wordle-btn {
+        .wordle-input button {
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -48,6 +63,11 @@
             display: inline-block;
             font-size: 16px;
             cursor: pointer;
+        }
+
+        .wordle-input button.disabled {
+            background-color: gray;
+            cursor: default;
         }
 
         .wordle-output {
@@ -74,23 +94,65 @@
         .grey-letter {
             margin-left: 5px;
             padding: 10px;
-            background-color: grey;
+            background-color: gray;
             color: black;
+        }
+
+        .bottom-section {
+            padding-left: 2%;
+            padding-top: 1%;
+            font-size: 15px;
+        }
+
+        .youtube-link {
+            float: right;
+            padding-right: 2%;
+        }
+
+        img {
+            padding-right: 4px;
+            width: 22px;
+            height: 20px;
+        }
+
+        .bottom-section-title {
+            font-size: 20px;
         }
     </style>
 </head>
 
 <body>
     <div class="wordle-container">
+        <div class="timer-container">
+            Timer:
+            <div id="timer" class="timer">03:00</div>
+        </div>
         <div class="overlay">
             <h1>Wordle App</h1>
             <div class="wordle-input">
                 <input type="text" id="inputField" placeholder="Enter your guess" />
-                <button class="wordle-btn" id="wordle-btn" onclick="checkGuess()">Check</button>
+                <button id="wordle-btn" onclick="checkGuess()">Check</button>
+                <button id="start-btn" onclick="startGame()">Start</button>
             </div>
             <div class="wordle-output">
                 <p id="result"></p>
             </div>
         </div>
+    </div>
+    <div class="bottom-section">
+        <div class="bottom-section-title">
+            <img src="linkedin_icon.png" alt="Image">
+            Connect with the Developers
+            <div class="youtube-link">
+                <img src="youtube_icon.png" alt="Image">
+                <a href="https://www.youtube.com/watch?v=lv4Zg-209MY" target="_blank">Confused how to play? Click the
+                    youtube link</a>
+            </div>
+        </div>
+        
+        <a href="https://www.linkedin.com/in/aishwarya-pani/" target="_blank">Aishwarya Pani</a>
+        <br><a href="https://www.linkedin.com/in/kourharpreet/" target="_blank">Harpreet Kour</a>
+        <br><a href="https://www.linkedin.com/in/karan-chopra-34680511a/" target="_blank">Karan Chopra</a>
+        <br><a href="https://www.linkedin.com/in/utkarsh-darbari/" target="_blank">Utkarsh Darbari</a>
     </div>
 </body>
