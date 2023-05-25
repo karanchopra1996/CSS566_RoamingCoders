@@ -1,7 +1,8 @@
-let targetWord = generateRandomWord();
+let targetWord;
 let remainingGuesses = 5;
 let remainingTime = 180; // 3 minutes in seconds
 let countdownInterval;
+let wordList;
 
 window.onload = function () {
     disableActivity();
@@ -23,21 +24,26 @@ function enableActivity() {
     checkButton.classList.remove("disabled");
 }
 
-function generateRandomWord() {
-    const wordList = [
-        "lucky", "table", "amber", "cloud", "dairy",
-        "frost", "knife", "roast", "tiger", "vital",
-        "yacht", "bluff", "crisp", "doubt", "eager",
-        "flame", "grace", "haste", "jelly", "knock",
-        "laugh", "mango", "noble", "oasis", "piano"
-    ];
-    return wordList[Math.floor(Math.random() * wordList.length)];
+async function generateRandomWord() {
+    try {
+        const response = await fetch('wordList.json');
+        wordList = await response.json();
+        return wordList[Math.floor(Math.random() * wordList.length)];
+    } catch (error) {
+        console.error('Failed to generate random word:', error);
+        return '';
+    }
+}
+
+function isWordValid(word) {
+    return wordList.includes(word);
 }
 
 function checkGuess() {
     const inputField = document.getElementById("inputField");
     const guessWord = inputField.value.toLowerCase();
     const resultText = document.getElementById("result");
+    const hintbox = document.getElementById("hintbox");
 
     let hintText = "";
     let incorrectPositions = 0;
@@ -48,6 +54,13 @@ function checkGuess() {
     if (guessWord.length !== targetWord.length) {
         resultText.textContent = "Incorrect guess. Guesses must be " +
             targetWord.length + " characters long. ";
+        resultText.style.color = "red";
+        inputField.value = "";
+        return;
+    }
+
+    if (!isWordValid(guessWord)) {
+        resultText.textContent = "Invalid guess. Please enter a valid word.";
         resultText.style.color = "red";
         inputField.value = "";
         return;
@@ -91,8 +104,8 @@ function checkGuess() {
         resultText.innerHTML =
             "Incorrect guess. You have " + remainingGuesses +
             " guesses remaining.<br>Correct positions: " + matchedPositions.length +
-            ".<br>Letters with incorrect position: " + incorrectPositions +
-            ".<div  style='padding-top:10px;'>Hint: " + hintText + "</div>";
+            ".<br>Letters with incorrect position: " + incorrectPositions + ".";
+        hintbox.innerHTML += "<div style='padding-top:10px; padding-left:32px;'>" + hintText + "</div><br>";
         resultText.style.color = "red";
         inputField.value = "";
     } else {
@@ -102,6 +115,7 @@ function checkGuess() {
         resultText.style.color = "red";
         disableActivity();
         clearInterval(countdownInterval);
+        hintbox.innerHTML += "<div style='padding-top:10px; padding-left:32px;'>" + hintText + "</div><br>";
         document.getElementById("timer").innerHTML = "03:00";
     }
 
@@ -126,8 +140,11 @@ function startTimer() {
 
 }
 
-function startGame() {
-    targetWord = generateRandomWord();
+async function startGame() {
+    targetWord = "";
+    while(targetWord.length != 5) {
+        targetWord = await generateRandomWord();
+    }
     remainingGuesses = 5;
     remainingTime = 180;
     clearInterval(countdownInterval);
@@ -135,5 +152,5 @@ function startGame() {
     startTimer();
     enableActivity();
     document.getElementById("result").innerHTML = "";
+    document.getElementById("hintbox").innerHTML = "";
 }
-
