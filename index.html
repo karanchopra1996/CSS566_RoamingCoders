@@ -15,14 +15,38 @@
             text-align: center;
         }
 
+        .game-icon-container {
+            width: 7%;
+            height: 14%;
+            position: absolute;
+            top: 10%;
+            right: 4%;
+            border-radius: 8px;
+            padding: 0px;
+        }
+
+        img {
+            padding-right: 4px;
+            width: 22px;
+            height: 20px;
+        }
+
+        .team-title {
+            color: white;
+            position: absolute;
+            top: 27%;
+            right: 3.5%;
+            font-weight: 600;
+        }
+
         .timer-container {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.8);
             font-size: 17px;
             width: 12%;
             height: 10%;
             position: absolute;
-            top: 14%;
-            right: 9%;
+            top: 68%;
+            right: 13%;
             border-radius: 8px;
         }
 
@@ -59,7 +83,6 @@
             border-radius: 5px;
             margin-left: 12px;
             text-align: center;
-            text-decoration: none;
             display: inline-block;
             font-size: 16px;
             cursor: pointer;
@@ -104,15 +127,13 @@
             font-size: 15px;
         }
 
+        .bottom-section-title {
+            font-size: 20px;
+        }
+
         .youtube-link {
             float: right;
             padding-right: 2%;
-        }
-
-        img {
-            padding-right: 4px;
-            width: 22px;
-            height: 20px;
         }
 
         .hint-overlay {
@@ -144,21 +165,34 @@
             padding-top: 24px;
         }
 
-        .bottom-section-title {
-            font-size: 20px;
+        .share-button {
+            background-color: rgba(76, 175, 80, 0.8);
+            color: white;
+            border: none;
+            padding: 7px 20px;
+            border-radius: 5px;
+            text-align: center;
+            display: absolute;
+            position: absolute;
+            top: 86%;
+            left: 39%;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
     <div class="wordle-container">
+        <img class="game-icon-container" src="twordle.jpg" alt="Image">
+        <div class="team-title">A product by Team <br>Roaming Coders</div>
         <div class="timer-container">
             Timer:
             <div id="timer" class="timer">03:00</div>
         </div>
         <div class="overlay">
-            <h1>Wordle App</h1>
-            <h3>Guess the 5 letter word!</h3>
+            <h1>Let's Twordle!!</h1>
+            <h3>Guess the 5 letter word</h3>
             <div class="wordle-input">
                 <input type="text" id="inputField" placeholder="Enter your guess" />
                 <button id="wordle-btn" onclick="checkGuess()">Check</button>
@@ -168,6 +202,7 @@
                 <p id="result"></p>
             </div>
         </div>
+        <button class="share-button" onclick="shareInvitation()">Loved the game? Share with your friends!</button>
         <div class="hint-overlay">
             <div class="hint-title">
                 Hint:

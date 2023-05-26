@@ -160,3 +160,9 @@ async function startGame() {
     document.getElementById("result").innerHTML = "";
     document.getElementById("hintbox").innerHTML = "";
 }
+
+function shareInvitation() {
+    const invitationMessage = "Hey friends! I found this interesting game 'Twordle'! Join me in playing the game! https://apani05.github.io/CSS566_RoamingCoders/";
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(invitationMessage)}`;
+    window.open(twitterUrl, '_blank');
+}
