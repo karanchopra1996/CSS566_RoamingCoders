@@ -94,7 +94,7 @@
         .grey-letter {
             margin-left: 5px;
             padding: 10px;
-            background-color: lightgray;
+            background-color: grey;
             color: black;
         }
 
@@ -117,7 +117,7 @@
 
         .hint-overlay {
             position: absolute;
-            top: 56%;
+            top: 50%;
             left: 14%;
             transform: translate(-50%, -50%);
             padding: 20px;
@@ -125,6 +125,7 @@
             width: 18%;
             border-radius: 10px;
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
         }
 
         .hint-title {
@@ -132,14 +133,15 @@
             position: absolute;
             font-size: 20px;
             font-weight: 700;
-            top: 26%;
-            left: 14%;
-            transform: translate(-50%, -50%);
+            left: 22%;
             background-color: white;
-            height: 4%;
-            width: 13%;
+            height: 7%;
+            width: 50%;
             border-radius: 10px;
-            text-align: center;
+        }
+
+        .hint-box {
+            padding-top: 24px;
         }
 
         .bottom-section-title {
@@ -166,12 +168,12 @@
                 <p id="result"></p>
             </div>
         </div>
-        <div class="hint-title">
-            Hint:
-        </div>
         <div class="hint-overlay">
+            <div class="hint-title">
+                Hint:
+            </div>
             <div class="wordle-output">
-                <p id="hintbox"></p>
+                <p id="hintbox" class="hint-box"></p>
             </div>
         </div>
     </div>

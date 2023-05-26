@@ -96,6 +96,7 @@ function checkGuess() {
     if (matchedPositions.length === targetWord.length) {
         resultText.innerHTML = "Congratulations! You guessed the word!";
         resultText.style.color = "green";
+        hintbox.innerHTML += "<div style='padding-top:10px; padding-left:32px;'>" + hintText + "</div><br>";
         disableActivity();
         clearInterval(countdownInterval);
         document.getElementById("timer").innerHTML = "03:00";
