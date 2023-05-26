@@ -123,6 +123,7 @@ function checkGuess() {
 }
 
 function startTimer() {
+    const resultText = document.getElementById("result");
     countdownInterval = setInterval(() => {
         remainingTime--;
 
@@ -133,6 +134,10 @@ function startTimer() {
 
         if (remainingTime === 0) {
             clearInterval(countdownInterval);
+            resultText.innerHTML =
+                "Out of time! <br>The target word was: " +
+                targetWord + ".<br> Better luck next time!";
+            resultText.style.color = "red";
             timerElement.innerHTML = "Time's up!";
             disableActivity();
         }
@@ -142,7 +147,7 @@ function startTimer() {
 
 async function startGame() {
     targetWord = "";
-    while(targetWord.length != 5) {
+    while (targetWord.length != 5) {
         targetWord = await generateRandomWord();
     }
     remainingGuesses = 5;
